@@ -8354,10 +8354,6 @@ header .header__logo img:hover {
   text-align: center;
 }
 
-.bodyContent .container .table {
-  max-width: 75vw;
-}
-
 .bodyContent .container .table-responsive {
   overflow-y: hidden;
 }
@@ -8397,4 +8393,16 @@ footer {
   background-attachment: fixed;
   margin-top: auto;
   font-style: italic;
+}
+
+.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
