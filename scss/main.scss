@@ -19,7 +19,9 @@
 @import '../node_modules/bootstrap/scss/utilities';
 @import '../node_modules/bootstrap/scss/buttons';
 @import '../node_modules/bootstrap/scss/forms';
-@import '../node_modules/bootstrap/scss/tables'; //External Styles
+@import '../node_modules/bootstrap/scss/dropdown';
+@import '../node_modules/bootstrap/scss/tables';
+//External Styles
 //Variables
 $btnColor: #e66161;
 // $btnColor: #e54f60;
@@ -33,9 +35,9 @@ $btnHover: white;
 }
 
 //Custom Styles
-body {
+body,
+h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 100%;
 }
 
 header {
@@ -88,56 +90,58 @@ header {
   -o-background-size: cover;
   background-size: cover;
   background-position: sticky;
+  background-attachment: fixed;
   background-repeat: no-repeat;
   height: auto;
   z-index: -1;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: auto;
   .container {
     background-color: white;
     height: auto;
     text-align: center;
-    .table {
-      // max-width: 75vw;
+  }
+  .table-responsive {
+    overflow-y: hidden;
+  }
+  .btn-danger {
+    background-color: $btnColor;
+    border-style: inset;
+    border-radius: 80px;
+    border-width: 3px;
+    border-color: $btnColor !important;
+    font-size: 25px;
+    &:hover {
+      @include btnEff();
+      border-style: outset;
     }
-    .table-responsive {
-      overflow-y: hidden;
+    &:active {
+      @include btnEff();
+      border-style: outset;
     }
-    .btn-danger {
-      background-color: $btnColor;
-      border-style: inset;
-      border-radius: 80px;
-      border-width: 3px;
-      border-color: $btnColor !important;
-      font-size: 25px;
-      &:hover {
-        @include btnEff();
-        border-style: outset;
-      }
-      &:active {
-        @include btnEff();
-      }
-      &:focus {
-        @include btnEff();
-      }
+    &:focus {
+      @include btnEff();
+      border-style: outset;
+    }
+  }
+  table {
+    thead {
+      background-color: #343a40;
+      color: white;
     }
   }
 }
-
+.endnotes {
+  justify-content: stretch;
+  display: flex;
+  background-color: #222121;
+  color: white;
+  list-style: none;
+}
 footer {
   background-color: #2c2c2c;
   color: white;
   text-align: center;
-  background-attachment: fixed;
-  margin-top: auto;
+  margin-top: 300px;
   font-style: italic;
-}
-
-.row {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
-  justify-content: space-around;
 }

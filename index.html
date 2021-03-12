@@ -10,7 +10,7 @@
 </head>
 <body>
 
-    <header>
+    <header class="sticky-top">
       <div class="header__logo">
         <a href="shop.html"><img src="res/LGlongLogo.png" alt="Lou Geh Logo"></a>
       </div>
@@ -22,10 +22,10 @@
       </nav> -->
     </header>
     <section class="bodyContent" >
-      
-      <div class="container pb-3">
+      <div class="container  d-flex justify-content-center align-self-center" style="height: 100vh;">
 
-        <form>
+        <form class="my-auto">
+          <img class="mb-5" src="res/undraw_shopping_app_flsj.svg" alt="" width="400" height="200">
           <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
@@ -39,7 +39,7 @@
             <input type="checkbox" class="form-check-input" id="exampleCheck1">
             <label class="form-check-label" for="exampleCheck1">Check me out</label>
           </div>
-          <button type="submit" class="btn btn-danger">Submit</button>
+          <button id="loginBtn" type="submit" class="btn btn-danger">Submit</button>
         </form>
 
       </div>
