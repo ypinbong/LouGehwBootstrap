@@ -65,9 +65,9 @@
         </div>
       </nav>
     </header>
-
+    div.
     <section class="bodyContent">
-      <div class="container py-3" style="height: 100vh">
+      <div class="container py-3" style="height: auto">
         <div class="container mt-2 mb-2">
           <img
             class="mt-5"
@@ -76,12 +76,12 @@
             width="200"
             height="100"
           />
-        </div>
-        <h1 class="text-center mt-3">Customer Database</h1>
-        <div id="toolbar">
-          <button id="shopAddBtn" class="btn btn-danger">
-            Add<span>&plus;</span>
-          </button>
+          <h1 class="text-center mt-3">Shop</h1>
+          <div id="toolbar">
+            <button id="shopAddBtn" class="btn btn-danger">
+              Add<span>&plus;</span>
+            </button>
+          </div>
           <table
             id="table"
             data-toggle="table"
@@ -94,7 +94,7 @@
             data-show-refresh="true"
             data-show-fullscreen="true"
             data-show-pagination-switch="true"
-            data-height="600"
+            data-height="710"
             data-url="database/custData.json"
           >
             <thead>
@@ -110,8 +110,29 @@
             </thead>
           </table>
         </div>
+        <div class="endnotes mx-auto d-flex flex-auto flex-column mt-5"></div>
       </div>
     </section>
+    <!-- <div class="col-lg-4 list-style-none mr-lg-5">
+      <div class="d-flex flex-justify-start flex-row flex-auto">
+        <ul class="col-4 col-sm-4 col-lg-4 col-xl-3 list-style-none f6 color-text-secondary pl-lg-4 ">
+          <li mb-1>
+            <a class="Link--secondary" href="shop.html">Shop</a>
+          </li>
+          <li mb-1>
+            <a class="Link--secondary" href="customers.html">Customers</a>
+          </li>
+          <li mb-1>
+            <a class="Link--secondary" href="suppliers.html">Suppliers</a>
+          </li>
+          <li mb-1>
+            <a class="Link--secondary" href="transactions.html">Suppliers</a>
+          </li>
+        </ul>
+        <ul class="col-4 col-sm-4 col-lg-4 col-xl-3 list-style-none f6 color-text-secondary pl-lg-4"></ul>
+        <ul class="col-4 col-sm-4 col-lg-4 col-xl-3 list-style-none f6 color-text-secondary pl-lg-4"></ul>
+      </div>
+    </div> -->
 
     <footer class="footer fixed-bottom">
       Copyright &copy; 2021 Yong Pin L. Bong
@@ -121,16 +142,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-    //JS files for the table
+    <!-- //JS files for the table -->
     <!-- <script src="js/bootstrap-table.js"></script>
     <script src="js/bootstrap-table-toolbar.js"></script> -->
 
     <script src="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.js"></script>
 
-    <script>
+    <!-- <script>
       $("#table").DataTable({
         bInfo: false,
       });
-    </script>
+    </script> -->
   </body>
 </html>
