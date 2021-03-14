@@ -1,26 +1,26 @@
 //Required bootstrap
 // @import 'node_modules/bootstrap/dist/css/bootstrap.min.css';
-@import '../node_modules/bootstrap/scss/functions';
-@import '../node_modules/bootstrap/scss/variables';
-@import '../node_modules/bootstrap/scss/mixins';
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
 
 //Optional bootstrap
-@import '../node_modules/bootstrap/scss/reboot';
-@import '../node_modules/bootstrap/scss/type';
-@import '../node_modules/bootstrap/scss/images';
-@import '../node_modules/bootstrap/scss/code';
-@import '../node_modules/bootstrap/scss/grid';
-@import '../node_modules/bootstrap/scss/tables';
-@import '../node_modules/bootstrap/scss/transitions';
-@import '../node_modules/bootstrap/scss/modal';
-@import '../node_modules/bootstrap/scss/nav';
-@import '../node_modules/bootstrap/scss/navbar';
-@import '../node_modules/bootstrap/scss/pagination';
-@import '../node_modules/bootstrap/scss/utilities';
-@import '../node_modules/bootstrap/scss/buttons';
-@import '../node_modules/bootstrap/scss/forms';
-@import '../node_modules/bootstrap/scss/dropdown';
-@import '../node_modules/bootstrap/scss/tables';
+@import "../node_modules/bootstrap/scss/reboot";
+@import "../node_modules/bootstrap/scss/type";
+@import "../node_modules/bootstrap/scss/images";
+@import "../node_modules/bootstrap/scss/code";
+@import "../node_modules/bootstrap/scss/grid";
+@import "../node_modules/bootstrap/scss/tables";
+@import "../node_modules/bootstrap/scss/transitions";
+@import "../node_modules/bootstrap/scss/modal";
+@import "../node_modules/bootstrap/scss/nav";
+@import "../node_modules/bootstrap/scss/navbar";
+@import "../node_modules/bootstrap/scss/pagination";
+@import "../node_modules/bootstrap/scss/utilities";
+@import "../node_modules/bootstrap/scss/buttons";
+@import "../node_modules/bootstrap/scss/forms";
+@import "../node_modules/bootstrap/scss/dropdown";
+@import "../node_modules/bootstrap/scss/tables";
 //External Styles
 //Variables
 $btnColor: #e66161;
@@ -37,7 +37,7 @@ $btnHover: white;
 //Custom Styles
 body,
 h1 {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
 }
 
 header {
@@ -84,7 +84,7 @@ header {
 }
 
 .bodyContent {
-  background-image: url('../res/pexels-clem-onojeghuo-375896.jpg');
+  background-image: url("../res/pexels-clem-onojeghuo-375896.jpg");
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

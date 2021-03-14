@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="dist/main.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+      integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="dist/bootstrap-table.css" />
+    <!-- <link href="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.css" rel="stylesheet"> -->
+    <link rel="icon" href="res/LGlogo.ico" />
+    <title>Lou Geh Supermarket System</title>
+  </head>
+  <body>
+    <header class="sticky-top">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="header__logo">
+          <a href="index.html"
+            ><img src="res/LGlongLogo.png" alt="Lou Geh Logo"
+          /></a>
+        </div>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav">
+            <li class="nav-item mx-2">
+              <a class="nav-link" href="shop.html">Shop</a>
+            </li>
+            <li class="nav-item mx-2">
+              <a class="nav-link" href="customers.html">Customers</a>
+            </li>
+            <li class="nav-item mx-2">
+              <a class="nav-link active" href="suppliers.html">Suppliers</a>
+            </li>
+            <li class="nav-item mx-2">
+              <a class="nav-link" href="transactions.html">Transactions</a>
+            </li>
+            <!-- <button class="btn btn-danger ml-3">Login</button> -->
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <section class="bodyContent">
+      <div class="container py-3" style="height: auto">
+        <div class="container mt-2 mb-2">
+          <img
+            class="mt-5"
+            src="res/undraw_factory_dy0a.svg"
+            alt=""
+            width="200"
+            height="100"
+          />
+          <h1 class="text-center mt-3">Suppliers</h1>
+          <div id="toolbar">
+            <button id="shopAddBtn" class="btn btn-danger">
+              Add<span>&plus;</span>
+            </button>
+          </div>
+          <table
+            id="table"
+            data-toggle="table"
+            data-pagination="true"
+            data-search="true"
+            data-search-align="left"
+            data-pagination-detail-h-align="right"
+            data-pagination-h-align="left"
+            data-show-toggle="true"
+            data-show-refresh="true"
+            data-show-fullscreen="true"
+            data-show-pagination-switch="true"
+            data-height="710"
+            data-url="database/itemData.json"
+          >
+            <thead>
+              <tr>
+                <th data-field="id" data-sortable="true">ID</th>
+                <th data-field="name" data-sortable="true">Name</th>
+                <th data-field="barcode" data-sortable="false">Barcode#</th>
+                <th data-field="description" data-sortable="false">
+                  Description
+                </th>
+                <th data-field="supplier" data-sortable="true">Supplier</th>
+                <th data-field="price" data-sortable="true">Price(Php)</th>
+                <th data-field="quantity" data-sortable="true">Quantity</th>
+                <th data-field="" data-sortable="false">Tools</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+        <div class="endnotes mx-auto d-flex flex-auto flex-column mt-5"></div>
+      </div>
+    </section>
+    <!-- <div class="col-lg-4 list-style-none mr-lg-5">
+      <div class="d-flex flex-justify-start flex-row flex-auto">
+        <ul class="col-4 col-sm-4 col-lg-4 col-xl-3 list-style-none f6 color-text-secondary pl-lg-4 ">
+          <li mb-1>
+            <a class="Link--secondary" href="shop.html">Shop</a>
+          </li>
+          <li mb-1>
+            <a class="Link--secondary" href="customers.html">Customers</a>
+          </li>
+          <li mb-1>
+            <a class="Link--secondary" href="suppliers.html">Suppliers</a>
+          </li>
+          <li mb-1>
+            <a class="Link--secondary" href="transactions.html">Suppliers</a>
+          </li>
+        </ul>
+        <ul class="col-4 col-sm-4 col-lg-4 col-xl-3 list-style-none f6 color-text-secondary pl-lg-4"></ul>
+        <ul class="col-4 col-sm-4 col-lg-4 col-xl-3 list-style-none f6 color-text-secondary pl-lg-4"></ul>
+      </div>
+    </div> -->
+
+    <footer class="footer fixed-bottom">
+      Copyright &copy; 2021 Yong Pin L. Bong
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- //JS files for the table -->
+    <!-- <script src="js/bootstrap-table.js"></script>
+    <script src="js/bootstrap-table-toolbar.js"></script> -->
+
+    <script src="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.js"></script>
+
+    <script>
+      $("#table").DataTable({
+        bInfo: false,
+      });
+    </script>
+  </body>
+</html>
