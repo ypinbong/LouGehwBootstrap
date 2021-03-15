@@ -9,6 +9,7 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -23,6 +24,124 @@
     <!-- <link href="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.css" rel="stylesheet"> -->
     <link rel="icon" href="res/LGlogo.ico" />
     <title>Lou Geh Supermarket System</title>
+    <style>
+/* .myBtn:hover {
+  cursor: pointer;
+} */
+
+/* The Modal (background) */
+.modal {
+  display: grid;
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+  transition: 1s;
+}
+
+/* The Close Button */
+.close {
+  color: #fff;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  background-color: #e54f60;
+  padding: 0 12px;
+  border-radius: 50px;
+  position: absolute;
+  top: -15px;
+  right: -15px;
+}
+
+.close:hover,
+.close:focus {
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #3e4239;
+}
+
+.modalContainer {
+  max-width: 350px;
+  border-radius: 20px;
+  padding: 40px;
+  background: #ffffff;
+  box-sizing: border-box;
+  color: #3e4239;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  transition: 1s;
+}
+
+.modalContainer input[type='text'],
+input[type='password'] {
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 4px 2px -2px #e54f60;
+  padding: 12px 5px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  margin: 5px;
+}
+.modalContainer input[type='number'],
+input[type='password'] {
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 4px 2px -2px #e54f60;
+  padding: 12px 5px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.modalContainer input[type='submit'] {
+  padding: 10px 15px;
+  margin-top: 10px;
+  border-radius: 100px;
+  border-style: none;
+  background-color: #fff;
+  border-color: #d35866;
+  border-style: inset;
+  color: #d35866;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 1s;
+}
+
+.modalContainer input[type='submit']:hover {
+  background-color: #f34e62;
+  color: #fff;
+}
+
+.modalContainer select {
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 4px 2px -2px #e54f60;
+  padding: 12px 5px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  margin: 5px;
+  color: gray;
+}
+
+.modalContainer option {
+  color: black;
+}
+
+    </style>
   </head>
   <body>
     <header class="sticky-top">
@@ -57,30 +176,56 @@
             <li class="nav-item mx-2">
               <a class="nav-link" href="suppliers.html">Suppliers</a>
             </li>
-            <li class="nav-item mx-2">
-              <a class="nav-link" href="transactions.html">Transactions</a>
+            <li class="nav-item mx-2 dropdown"><a class="nav-link dropdown-toggle " data-toggle="dropdown" href="transactions.html">Transaction</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="transactions.html">All Transactions</a></li>
+                <li><a class="dropdown-item" href="sTrans.html">Sales History</a></li>
+                <li><a class="dropdown-item" href="dTrans.html">Delivery History</a></li>
+                <li><a class="dropdown-item" href="makeTransaction.html">Make a Transaction</a></li>
+              </ul>
             </li>
-            <!-- <button class="btn btn-danger ml-3">Login</button> -->
+            <li class="nav-item mx-2">
+              <a class="nav-link" href="index.html">Logout</a>
+            </li>
           </ul>
         </div>
       </nav>
     </header>
-    div.
+    
     <section class="bodyContent">
-      <div class="container py-3" style="height: auto">
+      <div class="container py-3" style="min-height: 100vh">
         <div class="container mt-2 mb-2">
           <img
             class="mt-5"
-            src="res/undraw_empty_cart_co35.svg"
+            src="res/undraw_add_to_cart_vkjp.svg"
             alt=""
             width="200"
             height="100"
           />
           <h1 class="text-center mt-3">Shop</h1>
           <div id="toolbar">
-            <button id="shopAddBtn" class="btn btn-danger">
+            <a id="myBtn" class="btn btn-danger">
               Add<span>&plus;</span>
-            </button>
+            </a>
+          </div>
+          <div id="myModal" class="modal" data-backdrop="static">
+            <!-- Modal content -->
+            <div>
+                <div class="modalContainer">
+                    <span class="close">&times;</span>
+                    <img src="res/undraw_empty_cart_co35.svg" alt="" width="200" height="100">
+                    <h1>Fill in Item details</h1>
+                    <form action="" method="post">
+                        <input type="text" name="itemName" placeholder="Name..." required>
+                        <input type="text" name="barcode#" placeholder="Barcode#..." required>
+                        <input type="text" name="description" placeholder="Description..." required>
+                        <input type="text" name="supplier" placeholder="Supplier..." required>
+                        <input type="text" name="price" placeholder="Price..." required>
+                        <input type="number" name="quantity" placeholder="Quantity..." required>
+                        <input type="submit" name="login" value="Add">
+                    </form>
+                </div>
+            </div>
           </div>
           <table
             id="table"
@@ -94,7 +239,9 @@
             data-show-refresh="true"
             data-show-fullscreen="true"
             data-show-pagination-switch="true"
-            data-height="710"
+            data-detail-view="true"
+            data-detail-formatter="detailFormatter"
+            data-height="auto"
             data-url="database/itemData.json"
           >
             <thead>
@@ -108,7 +255,9 @@
                 <th data-field="supplier" data-sortable="true">Supplier</th>
                 <th data-field="price" data-sortable="true">Price(Php)</th>
                 <th data-field="quantity" data-sortable="true">Quantity</th>
-                <th data-field="" data-sortable="false">Tools</th>
+                <th data-field="itemStatus" data-sortable="true">Status</th>
+                <th data-field="action" data-formatter="actionFormatter">Action</th>
+                <!-- <th data-field="" data-sortable="false">Actions</th> -->
               </tr>
             </thead>
           </table>
@@ -116,27 +265,6 @@
         <div class="endnotes mx-auto d-flex flex-auto flex-column mt-5"></div>
       </div>
     </section>
-    <!-- <div class="col-lg-4 list-style-none mr-lg-5">
-      <div class="d-flex flex-justify-start flex-row flex-auto">
-        <ul class="col-4 col-sm-4 col-lg-4 col-xl-3 list-style-none f6 color-text-secondary pl-lg-4 ">
-          <li mb-1>
-            <a class="Link--secondary" href="shop.html">Shop</a>
-          </li>
-          <li mb-1>
-            <a class="Link--secondary" href="customers.html">Customers</a>
-          </li>
-          <li mb-1>
-            <a class="Link--secondary" href="suppliers.html">Suppliers</a>
-          </li>
-          <li mb-1>
-            <a class="Link--secondary" href="transactions.html">Suppliers</a>
-          </li>
-        </ul>
-        <ul class="col-4 col-sm-4 col-lg-4 col-xl-3 list-style-none f6 color-text-secondary pl-lg-4"></ul>
-        <ul class="col-4 col-sm-4 col-lg-4 col-xl-3 list-style-none f6 color-text-secondary pl-lg-4"></ul>
-      </div>
-    </div> -->
-
     <footer class="footer fixed-bottom">
       Copyright &copy; 2021 Yong Pin L. Bong
     </footer>
@@ -151,10 +279,27 @@
 
     <script src="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.js"></script>
 
-    <!-- <script>
-      $("#table").DataTable({
-        bInfo: false,
-      });
-    </script> -->
+    <script src="js/app.js"></script>
+    
+    <script>
+
+      function detailFormatter(index, row){
+          var html = []
+          $.each(row, function(key, value){
+              html.push('<p class="row" style="width:100%"><b class="col-md-2">'+ key +':</b><span class="col-md-10"> '+value +'</span></p>')
+          })
+          return html.join('')
+      }
+      function actionFormatter(index,row){
+          var html = []
+          $.each(row, function(key,value){
+              if(key=='id'){
+                  html.push('<a class=edit" href="?edit='+value+'" title="edit"><i class="fa fa-edit"></i></a>')
+              }
+          })
+          return html.join('')
+      }
+      
+      </script>
   </body>
 </html>

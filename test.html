@@ -1,0 +1,58 @@
+<table class="languages">
+    <tr>
+        <td>Language</td><td>Level</td>
+    </tr>
+    <tr class="initial">
+        <td>
+            <select name="nativelang" class="nativelangdrop" required>
+            <option>test1</option>
+            <option>test1</option>
+            <option>test1</option>
+            <?php
+            if ($file = @fopen('txt/languages.txt', 'r')) {
+                while(($line = fgets($file)) !== false) {
+                    echo "<option>{$line}</option>";
+                }
+                fclose($file);
+            }
+            ?>
+            </select>
+        </td>
+        <td>
+            <select name="langlevel" class="langleveldrop" required>
+            <option>test1</option>
+            <option>test1</option>
+            <option>test1</option>
+            <?php
+            if ($file = @fopen('txt/levels.txt', 'r')) {
+                while(($line = fgets($file)) !== false) {
+                    echo "<option>{$line}</option>";
+                }
+                fclose($file);
+            }
+            ?>
+            </select>
+        </td>
+    </tr>
+</table>
+<a href="#" title="" class="add-author">Add Author</a>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+var count = 1;
+$(document).ready(function(){
+
+    $('.add-author').on('click', function(e){
+        if($('.nativelangdrop').length < 3) {
+            count++;
+            var initial_row = $('tr.initial').first().clone();
+            var nativelang_name = initial_row.find('td:eq(0) select').attr('name'); // first td select
+            var langlevel_name = initial_row.find('td:eq(1) select').attr('name'); // second td select
+            initial_row.find('td:eq(0) select').attr('name', nativelang_name + count);
+            initial_row.find('td:eq(1) select').attr('name', langlevel_name + count);
+            $('table.languages').append(initial_row);
+        }
+    });
+
+});
+</script>

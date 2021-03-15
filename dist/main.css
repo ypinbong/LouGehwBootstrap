@@ -8563,6 +8563,19 @@ header .navbar .nav-link {
   padding: 0;
 }
 
+header .navbar li {
+  margin: auto;
+  color: #e3e3e3;
+}
+
+header .navbar li:visited {
+  color: #e3e3e3;
+}
+
+header .navbar li .dropdown-item {
+  font-size: 20px;
+}
+
 header .active {
   border-bottom: 4px solid #e66161;
 }

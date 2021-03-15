@@ -57,10 +57,16 @@
             <li class="nav-item mx-2">
               <a class="nav-link" href="suppliers.html">Suppliers</a>
             </li>
+            <li class="nav-item mx-2 dropdown active"><a class="nav-link dropdown-toggle " data-toggle="dropdown" href="transactions.html">Transaction<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="transactions.html">All Transactions</a></li>
+                <li><a class="dropdown-item" href="sTrans.html">Sales History</a></li>
+                <li><a class="dropdown-item" href="dTrans.html">Delivery History</a></li>
+                <li><a class="dropdown-item" href="makeTransaction.html">Make a Transaction</a></li>
+              </ul>
+            </li>
             <li class="nav-item mx-2">
-              <a class="nav-link active" href="transactions.html"
-                >Transactions</a
-              >
+              <a class="nav-link" href="index.html">Logout</a>
             </li>
             <!-- <button class="btn btn-danger ml-3">Login</button> -->
           </ul>
@@ -69,7 +75,7 @@
     </header>
 
     <section class="bodyContent">
-      <div class="container py-3" style="height: auto">
+      <div class="container py-3" style="min-height: 100vh">
         <div class="container mt-2 mb-2">
           <img
             class="mt-5"
@@ -80,12 +86,12 @@
           />
           <h1 class="text-center mt-3">Transaction History</h1>
           <div id="toolbar">
-            <button id="shopAddBtn" class="btn btn-danger">
+            <a href="makeTransaction.html" class="btn btn-danger">
               Make a Transaction<span>&plus;</span>
-            </button>
+            </a>
           </div>
           <table
-            id="table"
+            id="editTable"
             data-toggle="table"
             data-pagination="true"
             data-search="true"
@@ -96,48 +102,25 @@
             data-show-refresh="true"
             data-show-fullscreen="true"
             data-show-pagination-switch="true"
-            data-height="710"
-            data-url:="database/transData.json"
+            data-detail-view="true"
+            data-detail-formatter="detailFormatter"
+            data-height="auto"
+            data-url="database/transData.json"
           >
             <thead>
               <tr>
-                <th data-field="id" data-sortable="true">ID</th>
-                <th data-field="name" data-sortable="true">Name</th>
-                <th data-field="barcode" data-sortable="false">Barcode#</th>
-                <th data-field="description" data-sortable="false">
-                  Description
-                </th>
-                <th data-field="supplier" data-sortable="true">Supplier</th>
-                <th data-field="price" data-sortable="true">Price(Php)</th>
-                <th data-field="quantity" data-sortable="true">Quantity</th>
-                <th data-field="" data-sortable="false">Tools</th>
+                <th id="id" data-field="id" data-sortable="true">ID</th>
+                <th id="transType" data-field="transType" data-sortable="true">Type</th>
+                <th id="transDate" type="Date" data-field="transDate" data-sortable="true">Date</th>
+                <th data-field="action" data-formatter="actionFormatter">Action</th>
               </tr>
             </thead>
+            <tbody ></tbody>
           </table>
         </div>
         <div class="endnotes mx-auto d-flex flex-auto flex-column mt-5"></div>
       </div>
     </section>
-    <!-- <div class="col-lg-4 list-style-none mr-lg-5">
-      <div class="d-flex flex-justify-start flex-row flex-auto">
-        <ul class="col-4 col-sm-4 col-lg-4 col-xl-3 list-style-none f6 color-text-secondary pl-lg-4 ">
-          <li mb-1>
-            <a class="Link--secondary" href="shop.html">Shop</a>
-          </li>
-          <li mb-1>
-            <a class="Link--secondary" href="customers.html">Customers</a>
-          </li>
-          <li mb-1>
-            <a class="Link--secondary" href="suppliers.html">Suppliers</a>
-          </li>
-          <li mb-1>
-            <a class="Link--secondary" href="transactions.html">Suppliers</a>
-          </li>
-        </ul>
-        <ul class="col-4 col-sm-4 col-lg-4 col-xl-3 list-style-none f6 color-text-secondary pl-lg-4"></ul>
-        <ul class="col-4 col-sm-4 col-lg-4 col-xl-3 list-style-none f6 color-text-secondary pl-lg-4"></ul>
-      </div>
-    </div> -->
 
     <footer class="footer fixed-bottom">
       Copyright &copy; 2021 Yong Pin L. Bong
@@ -152,11 +135,29 @@
     <script src="js/bootstrap-table-toolbar.js"></script> -->
 
     <script src="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.js"></script>
+    <script src="js/bootstrap-table copy.js"></script>
+    <script src="bootstrap-table-toolbar.js"></script>
+    
+<script>
 
-    <script>
-      $("#table").DataTable({
-        bInfo: false,
-      });
-    </script>
+function detailFormatter(index, row){
+    var html = []
+    $.each(row, function(key, value){
+        html.push('<p class="row" style="width:100%"><b class="col-md-2">'+ key +'</b><span class="col-md-10">: '+value +'</span></p>')
+    })
+    return html.join('')
+}
+function actionFormatter(index,row){
+    var html = []
+    $.each(row, function(key,value){
+        if(key=='id'){
+            html.push('<a class=edit" href="?edit='+value+'" title="edit"><i class="fa fa-edit"></i></a>')
+        }
+    })
+    return html.join('')
+}
+
+</script>
+
   </body>
 </html>
