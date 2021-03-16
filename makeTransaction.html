@@ -319,7 +319,7 @@
     <script src="js/editButton.js"></script>
 
     <script>
-
+    //temporarily store and show added data
     window.onload = function() {
     var selItem = sessionStorage.getItem("SelItem");  
     $('#sort-item').val(selItem);
@@ -328,7 +328,7 @@
         var selVal = $(this).val();
         sessionStorage.setItem("SelItem", selVal);
     });
-    
+    //customizing table using mydatatble class
     $('.mydatatable').DataTable({
       searching:false,
       bLengthChange:false,
