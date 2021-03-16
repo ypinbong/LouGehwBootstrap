@@ -12,6 +12,7 @@ $(document).ready(function(){
             '<td><input type="text" class="form-control" name="phone" id="phone"></td>' +
             '<td><input type="text" class="form-control" name="phone" id="phone"></td>' +
             '<td><input type="text" class="form-control" name="phone" id="phone"></td>' +
+            '<td><input type="text" class="form-control" name="phone" id="phone"></td>' +
 			'<td>' + actions + '</td>' +
         '</tr>';
     	$("table").append(row);		

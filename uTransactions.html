@@ -73,24 +73,23 @@
     </header>
 
     <section class="bodyContent">
-      <div class="container py-3" style="min-height: 100vh">
+        <div class="container py-3" style="min-height: 100vh">
         <div class="container mt-2 mb-2">
-          <img
-            class="mt-5"
-            src="res/undraw_online_transactions_02ka.svg"
-            alt=""
-            width="200"
-            height="100"
-          />
-          <h1 class="text-center mt-3">Transaction History</h1>
-          <div id="toolbar">
-            <a href="makeTransaction.html" id="myBtn" class="btn btn-danger">
-              Make a Transaction<span>&plus;</span>
-            </a>
-          </div>
-          <div id="myModal" class="modal" data-backdrop="static">
-          </div>
-          <table
+            <img
+                class="mt-5"
+                src="res/undraw_online_transactions_02ka.svg"
+                alt=""
+                width="200"
+                height="100"
+            />
+            <h1 class="text-center mt-3">Transaction Details</h1>
+            <div style="text-align: left;">
+                <h5><strong>Transaction ID:</strong> ###</h5>
+                <h5><strong>Type:</strong> Sales/Delivery</h5>
+                <h5><strong>Date of Transaction:</strong> mm/dd/yy</h5>
+            </div>
+        </div>
+          <table class="mydatatable"
             id="table"
             data-toggle="table"
             data-pagination="true"
@@ -107,51 +106,57 @@
           >
             <thead>
               <tr>
-                <th data-field="id" data-sortable="true">ID</th>
-                <th data-field="name" data-sortable="true">Type</th>
-                <th data-field="barcode" data-sortable="false">Date</th>
+                <th data-field="id" data-sortable="true">Quantity</th>
+                <th data-field="itemName" data-sortable="true">Item</th>
+                <th data-field="price" data-sortable="false">Supplier</th>
+                <th data-field="supName" data-sortable="false">Price</th>
                 <th data-field="action" data-formatter="actionFormatter">Action</th>
                 <!-- <th data-field="" data-sortable="false">Actions</th> -->
               </tr>
             </thead>
             <tbody>
-              <tr>
-                  <td  class="">0001</td>
-                  <td  ><a href="uTransactions.html">Delivery</a></td>
-                  <td  >03/06/2021</td>
-                  <td><span class="material-icons">&#xe254;</span></td>
-              </tr>
-              <tr>
-                  <td  >0002</td>
-                  <td  ><a href="uTransactions.html">Sales</a></td>
-                  <td  >03/06/2021</td>
-                  <td  class=""><span class="material-icons">&#xe254;</span></td>
-              </tr>
-              <tr>
-                  <td  class="">0003</td>
-                  <td  class=""><a href="uTransactions.html">Sales</a></td>
-                  <td  class="">03/06/2021</td>
-                  <td  class=""><span class="material-icons">&#xe254;</span></td>
-              </tr>
-              <tr>
-                  <td  class="">0004</td>
-                  <td  class=""><a href="uTransactions.html">Delivery</a></td>
-                  <td  class="">03/06/2021</td>
-                  <td  class=""><span class="material-icons">&#xe254;</span></td>
-              </tr>
-              <tr>
-                  <td  class="">0005</td>
-                  <td  class=""><a href="uTransactions.html">Delivery</a></td>
-                  <td  class="">03/06/2021</td>
-                  <td  class=""><span class="material-icons">&#xe254;</span></td>
-              </tr>
-              <tr>
-                  <td  class="">0006</td>
-                  <td  class=""><a href="uTransactions.html">Sales</a></td>
-                  <td  class="">03/06/2021</td>
-                  <td class=""><span class="material-icons">&#xe254;</span></td>
-              </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Meatastic</td>
+                    <td>Reilly and Sons</td>
+                    <td>Php 220.00</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Milkocity</td>
+                    <td>Reilly and Sons</td>
+                    <td>Php 100.00</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>1200</td>
+                    <td>Eggverse</td>
+                    <td>Reilly and Sons</td>
+                    <td>Php 7.00</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td>Milka</td>
+                    <td>Reilly and Sons</td>
+                    <td>Php 50.00</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Treehouse Meat</td>
+                    <td>Reilly and Sons</td>
+                    <td>Php 300.00</td>
+                    <td></td>
+                </tr>
           </tbody>
+          <tfoot>
+            <tr>
+              <th colspan="3" class="text-right">Total: </th>
+              <th colspan="2"></th>
+            </tr>
+          </tfoot>
           </table>
         </div>
         <div class="endnotes mx-auto d-flex flex-auto flex-column mt-5"></div>
@@ -165,6 +170,9 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 
     <!-- //JS files for the table -->
     <!-- <script src="js/bootstrap-table.js"></script>
@@ -192,6 +200,45 @@ function actionFormatter(index,row){
     })
     return html.join('')
 }
+
+$('.mydatatable').DataTable({
+    searching:false,
+    bLengthChange:false,
+    bPaginate:false,
+    dom: '<"top">rt<"bottom"lfp><"clear">',
+    footerCallback: function (row, data, start, end, display) {
+        var api = this.api(), data;
+
+        //Remove the formatting to get integer data for summation
+        var intVal = function (i) {
+        return typeof i === 'string' ?
+            i.replace(/[Php,]/g, '')*1 :
+            typeof i === 'number' ?
+            i : 0;
+        };
+
+        //Total over all pages
+        total = api
+        .column( 3 )
+        .data()
+        .reduce( function (a, b) {
+            return intVal(a) + intVal(b);
+        }, 0);
+
+        //Total over this page
+        pageTotal = api
+        .column( 3, {page: 'current'})
+        .data()
+        .reduce(function (a, b) {
+            return intVal(a) + intVal(b);
+        }, 0 );
+
+        //Update footer
+        $(api.column( 3 ).footer() ).html(
+        'Php '+pageTotal +' ( Php '+ total +' total )'
+        );
+    }
+})
 
 </script>
 

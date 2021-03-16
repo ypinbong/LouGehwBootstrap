@@ -174,8 +174,6 @@
             <li class="nav-item mx-2 dropdown active"><a class="nav-link dropdown-toggle " data-toggle="dropdown" href="transactions.html">Transaction<span></span></a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="transactions.html">All Transactions</a></li>
-                <li><a class="dropdown-item" href="sTrans.html">Sales History</a></li>
-                <li><a class="dropdown-item" href="dTrans.html">Delivery History</a></li>
                 <li><a class="dropdown-item" href="makeTransaction.html">Make a Transaction</a></li>
               </ul>
             </li>
@@ -206,7 +204,7 @@
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
             <label class="form-check-label mx-5" for="flexRadioDefault2">
               Sales
             </label>
@@ -223,7 +221,7 @@
                           </div>
                       </div>
                   </div>
-                  <table id="table" class="table table-bordered"
+                  <table id="table" class="table table-bordered mydatatable"
                     data-id-table="advancedTable"
                     data-filter-control="true"
                   >
@@ -235,17 +233,47 @@
                               <th>Client</th>
                               <th>Price (Php)</th>
                               <th>Quantity</th>
+                              <th>Total (Php)</th>
                               <th>Actions</th>
                           </tr>
                       </thead>
                       <tbody>
                           <tr>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
+                              <td>1</td>
+                              <td>Cheese - Provolone</td>
+                              <td>Nulla mollis molestie lorem.</td>
+                              <td>Arron Cormode</td>
+                              <td>27</td>
+                              <td>12</td>
+                              <td>324</td>
+                              <td>
+                                  <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+                                  <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                                  <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                              </td>
+                          </tr>     
+                          <tr>
+                              <td>2</td>
+                              <td>Mussels - Cultivated</td>
+                              <td>Etiam pretium iaculis justo</td>
+                              <td>Dasi Standage</td>
+                              <td>59</td>
+                              <td>3</td>
+                              <td>177</td>
+                              <td>
+                                  <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+                                  <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                                  <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                              </td>
+                          </tr>     
+                          <tr>
+                              <td>3</td>
+                              <td>Beef - Striploin Aa</td>
+                              <td>Proin eu mi.</td>
+                              <td>Rey Josskoviz</td>
+                              <td>16</td>
+                              <td>1000</td>
+                              <td>16000</td>
                               <td>
                                   <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
                                   <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
@@ -253,6 +281,12 @@
                               </td>
                           </tr>     
                       </tbody>
+                      <tfoot>
+                        <tr>
+                          <th colspan="6" class="text-right">Total: </th>
+                          <th colspan="2"></th>
+                        </tr>
+                      </tfoot>
                   </table>
               </div>
               <button href="#shopAddForm" class="btn btn-danger mt-5">
@@ -278,6 +312,8 @@
     <script src="js/bootstrap-table-toolbar.js"></script> -->
 
     <script src="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 
     <script src="js/app.js"></script>
     <script src="js/editButton.js"></script>
@@ -292,13 +328,47 @@
         var selVal = $(this).val();
         sessionStorage.setItem("SelItem", selVal);
     });
+    
+    $('.mydatatable').DataTable({
+      searching:false,
+      bLengthChange:false,
+      bPaginate:false,
+      dom: '<"top">rt<"bottom"lfp><"clear">',
+      footerCallback: function (row, data, start, end, display) {
+        var api = this.api(), data;
+
+        //Remove the formatting to get integer data for summation
+        var intVal = function (i) {
+          return typeof i === 'string' ?
+            i.replace(/[Php,]/g, '')*1 :
+            typeof i === 'number' ?
+            i : 0;
+        };
+
+        //Total over all pages
+        total = api
+          .column( 6 )
+          .data()
+          .reduce( function (a, b) {
+              return intVal(a) + intVal(b);
+          }, 0);
+
+        //Total over this page
+        pageTotal = api
+          .column( 6, {page: 'current'})
+          .data()
+          .reduce(function (a, b) {
+              return intVal(a) + intVal(b);
+          }, 0 );
+
+        //Update footer
+        $(api.column( 6 ).footer() ).html(
+           'Php '+pageTotal +' ( Php '+ total +' total )'
+        );
+      }
+    })
 
     </script>
 
-    <!-- <script>
-      $("#table").DataTable({
-        bInfo: false,
-      });
-    </script> -->
   </body>
 </html>
